@@ -1,0 +1,205 @@
+import java.util.ArrayList;
+
+public class publishAdv {
+	//ATTRIBUTES
+	public String[] listScopeJob = {"non","full-time", "part-time", "freelance"};
+	public String[] listSalary = {"non","5000","10000","15000","20000"};
+	public String[] listEduction = {"non","HighSchool","University"};
+
+	private ArrayList<String> listHeader;//Domain
+	private ArrayList<String> listJobType;//Role
+	private ArrayList<String> listArea;//Area
+	
+	public final int SIZE = 7; //Number of Elements in content's array in publishAdv object
+	
+	private static int nextId = 1;
+	private final int id = nextId;
+	private String[] content;
+	private boolean isPublish;
+	
+	
+	//CONSTRUCTOR	
+	publishAdv(String header, String jobType, String scope, String salary, String edu, String area, String text) {
+		
+		//Define lists:
+		this.listHeader = new ArrayList<String>();
+		this.listHeader.add("Hardware");
+		this.listHeader.add("Software");
+			
+		this.listJobType = new ArrayList<String>();
+		this.listJobType.add("Engineer");
+		this.listJobType.add("Scientist");
+		
+		this.listArea = new ArrayList<String>();
+		this.listArea.add("north");
+		this.listArea.add("south");
+		this.listArea.add("west");
+		this.listArea.add("east");
+		
+	/*
+	 **********************************************
+	 *flag variable, related to isPublish variable
+	 *Answer TRUE = successes ; FALSE = failures
+	 **********************************************
+	 */	
+		int flag = 1; //Initialized to true = success
+		
+		content = new String[SIZE];
+		
+		flag *= set_header(header);
+		flag *= set_jobType(jobType);
+		flag *= set_scope(scope);
+		flag *= set_salary(salary);
+		flag *= set_edu(edu);
+		flag *= set_area(area);
+		content[SIZE-1] = text;
+		
+		
+		
+		if(flag == 1) {
+			isPublish = true;
+			//id = ++nextId;
+			nextId++;
+		}
+		else 
+			isPublish = false;		
+	}
+	
+	
+	/* 
+	 ************* 
+	 ****GETs*****
+	 *************
+	 */
+	
+	//get list of category
+	public String[] getContent() {
+		return this.content;
+	}
+	//get category value by content array's index
+	public String getContentByVal(int index) {
+		return this.content[index];
+	}
+	
+	public boolean getIsPublish() {
+		return this.isPublish;
+	}
+	
+	public int get_idAd() {
+		return id; 
+	}
+	
+	
+	
+	/* 
+	 ************* 
+	 ****SETs*****
+	 *************
+	 */
+	
+	/*
+	private ArrayList<String> addLists(String[] arr) {
+		ArrayList<String> temp = new ArrayList<String>();
+		if(arr != null)
+			for(String val : arr)
+				temp.add(val);
+		return temp;
+	}
+	*/
+	
+	
+	public int set_header(String header) {
+		for(String val : this.listHeader)
+			if(header == val) {
+				content[0] = header;
+				return 1;
+			}
+		//content[0] = "";
+		return 0;
+	}
+	
+	public int set_jobType(String jobType) {
+		for(String val : this.listJobType)
+			if(jobType == val) {
+				content[1] = jobType;
+				return 1;
+			}
+		//content[1] = "";
+		return 0;
+	}
+	
+	public int set_scope(String scope) {
+		for(String val : this.listScopeJob)
+			if(scope == val) {
+				content[2] = scope;
+				return 1;
+			}
+		//content[2] = "";
+		return 0;
+	}
+	
+	public int set_salary(String salary) {
+		for(String val : this.listSalary)
+			if(salary == val) {
+				content[3] = salary;
+				return 1;
+			}
+		//content[3] = "";
+		return 0;
+	}
+	
+	public int set_edu(String edu) {
+		for(String val : this.listEduction)
+			if(edu == val) {
+				content[4] = edu;
+				return 1;
+			}
+		//content[4] = "";
+		return 0;
+	}
+	
+	public int set_area(String area) {
+		for(String val : this.listArea)
+			if(area == val) {
+				content[5] = area;
+				return 1;
+			}
+		//content[5] = "";
+		return 0;
+	}
+	
+	public boolean set_isPublish(boolean ans) {
+		return this.isPublish = ans;
+	}
+	
+	/*
+	 * Methods
+	 */
+	public boolean addHeader(String str) {
+		if(str != null) {
+			this.listHeader.add(str);
+			return true;
+		}
+		return false;
+	}
+	
+	public boolean addJobType(String str) {
+		if(str != null) {
+			this.listJobType.add(str);
+			return true;
+		}
+		return false;
+	}
+	
+	public boolean addArea(String str) {
+		if(str != null) {
+			this.listArea.add(str);
+			return true;
+		}
+		return false;
+	}
+	
+}
+
+
+

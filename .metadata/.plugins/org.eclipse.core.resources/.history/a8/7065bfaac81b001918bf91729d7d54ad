@@ -1,0 +1,75 @@
+//Igor Zhivilko ID: 306570946 Almog Fadida ID: 315544437 Moran Arzi ID: 200244945
+
+import java.util.Scanner;
+
+public class Assignment11 {
+
+	public static Scanner sc = new Scanner(System.in);
+	
+	public static void main(String[] args) {
+		
+		String str = new String();
+		String sub = new String();
+		
+		str = "fast breakfast";
+		sub ="fast";
+		
+		System.out.println(subInStringLastIndex(str, sub));
+		
+		String[] strArr = {"High", "High};
+		
+		System.out.println(arrayIsSubStrings(strArr));
+		
+		sc.close();
+	}
+
+	//Ex. 1
+	
+	public static int subInStringLastIndex(String str, String sub)
+	{	
+		for(int i = str.length() ; i > sub.length() - 1 ; i--)
+		{
+			if(sub.equals(str.substring(i - sub.length(), i)))
+				return i - sub.length();
+		}
+		
+		return -1;
+	}
+	
+	//Ex 2.
+	
+	public static boolean stringIsSubString(String sub, String str)
+	{
+		for(int i = 0; i < str.length() - sub.length(); i++)
+		{
+			if(sub.equals(str.substring(i, i + sub.length())));
+				return true;
+		}
+		
+		return false;
+	}
+	
+	
+	public static boolean arrayIsSubStrings(String[] strArr)
+	{
+		int checkSubString;
+		
+		checkSubString = 0;
+		
+		for(int i = 0; i < strArr.length - 1; i++)
+		{
+			if(stringIsSubString(strArr[i] , strArr[i + 1]))
+				checkSubString++;
+		}
+		
+		if(checkSubString == strArr.length - 1)
+			return true;
+		
+		return false;
+		
+	}
+	
+	
+	
+	
+}//End of class

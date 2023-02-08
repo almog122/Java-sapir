@@ -1,0 +1,369 @@
+//Igor Zhivilko ID: 306570946 Almog Fadida ID: 315544437 Moran Arzi ID: 200244945
+package lab9;
+import java.util.Scanner;
+public class Assignment9 {
+
+    public static Scanner sc = new Scanner(System.in);
+	
+	public static void main(String[] args) {
+		//This progrem gets arrays from user and uses the functions on the entered array.
+		//The first function check if the array is acending/descending and return true if the condition met or falsh if not.
+		//The second function check if the numbers on the corresponding location on the two array is dividable and return true if the condition is met or falsh if not.
+		//The third function that gets 3 points on axes system finds the area and perimeter of a right angle triangle that they make, And returns these values ​​as an array of size 2, where in the 0 cell there is the area of ​​the triangle, and in cell 1 there will be a perimeter.
+		//The fourth function return the average of the prime numbers in the array.
+		//the fifth function retrun the highest sum of prime numbers in a row of an array.
+		
+		final int ONE;
+		int i, j, arrayLengthDimOne, arrayLengthDimTwo;
+		double pointAX, pointAY, pointBX, pointBY, pointCX, pointCY;
+		
+		ONE = 1;
+		
+		// Ex. 1
+		
+		System.out.println("Choose array size :"); //Start of the first function
+		arrayLengthDimOne = sc.nextInt();
+		
+		int[] array = new int[arrayLengthDimOne];
+		
+		System.out.println("Enter array numbers :"); //User enter one dimension array.
+		for(i = 0; i < array.length; i++)
+		{
+			array[i] = sc.nextInt();
+		}
+		
+		System.out.println("{"); //Print the array , in a form like {a,b,c}
+		for(i = 0; i < array.length; i++)
+		{
+			if (i + ONE != array.length)
+				System.out.print(array[i] + ", ");
+			else
+				System.out.print(array[i]);
+		}
+		System.out.print("} ");
+		
+		System.out.println("array ascending/descending? : " + seriesOfNum(array)); //End of the first function.
+		
+		
+		//Ex. 2
+		
+		System.out.println("Choose arrayDivide1 size :"); // start of the second function.
+		arrayLengthDimOne = sc.nextInt();
+		
+		int[] arrayDivide1 = new int[arrayLengthDimOne];
+		
+		System.out.println("Choose arrayDivide2 size :");
+		arrayLengthDimOne = sc.nextInt();
+		
+		int[] arrayDivide2 = new int[arrayLengthDimOne];
+		
+		System.out.println("Enter arrayDivide1 numbers :"); //Print the array , in a form like {a,b,c}
+		for(i = 0; i < arrayDivide1.length; i++)
+		{
+			arrayDivide1[i] = sc.nextInt();
+		}
+		
+		System.out.println("Enter arrayDivide2 numbers :"); //Print the array , in a form like {a,b,c}
+		for(i = 0; i < arrayDivide2.length; i++)
+		{
+			arrayDivide2[i] = sc.nextInt();
+		}
+		
+		System.out.print("arrayDivide1 :");
+		System.out.print(" {");
+		for(i = 0; i < arrayDivide1.length; i++)
+		{
+			if (i + ONE != arrayDivide1.length)
+				System.out.print(arrayDivide1[i] + ", ");
+			else
+				System.out.print(arrayDivide1[i]);
+		}
+		System.out.print("} ");
+		
+		System.out.print("arrayDivide2 :"); //Print the array , in a form like {a,b,c}
+		System.out.print(" {");
+		for(i = 0; i < arrayDivide2.length; i++)
+		{
+			if (i + ONE != arrayDivide2.length)
+				System.out.print(arrayDivide2[i] + ", ");
+			else
+				System.out.print(arrayDivide2[i]);
+		}
+		System.out.print(" }");
+		
+		System.out.println("the arrays divide perfectly : " + dividedSeries(arrayDivide1, arrayDivide2)); // End of the second function.
+		
+		//Ex 3.
+		
+		System.out.println("Enter A(x , y)"); // Start of the third function.
+		pointAX = sc.nextDouble();
+		pointAY = sc.nextDouble();
+		System.out.println("Enter B(x , y)");
+		pointBX = sc.nextDouble();
+		pointBY = sc.nextDouble();
+		System.out.println("Enter C(x , y)");
+		pointCX = sc.nextDouble();
+		pointCY = sc.nextDouble();
+		
+		double[] arrayTringle = tringleAreaPerimeter(pointAX, pointAY, pointBX, pointBY, pointCX, pointCY);
+		
+		System.out.println("Tringle perimeter : " + arrayTringle[0]);//Print the array.
+		System.out.println("Tringle area : " + arrayTringle[1]); //End of the third function
+	
+		//Ex 4.
+		
+		System.out.println("Enter array first diminsion"); // Start of the fourth function
+		arrayLengthDimOne = sc.nextInt();
+		System.out.println("Enter array second diminsion");
+		arrayLengthDimTwo = sc.nextInt();
+		
+		int[][] arrayPrime = new int[arrayLengthDimOne][arrayLengthDimTwo];
+		
+		System.out.println("Enter arrayPrime numbers :");
+		for(i = 0; i < arrayPrime.length; i++)
+		{
+			for(j = 0; j < arrayPrime[i].length; j++)
+				arrayPrime[i][j] = sc.nextInt();
+		}
+		
+		System.out.println("arrayPrime :");//Print the array , in a form like {a,b,c}
+		System.out.print(" {");
+		for(i = 0; i < arrayPrime.length; i++)
+		{
+			for(j = 0; j < arrayPrime[i].length; j++)
+			{
+				if (i + ONE != arrayPrime[i].length)
+					System.out.print(arrayPrime[i][j] + ", ");
+				else
+					System.out.print(arrayPrime[i][j]);
+			}//End of for j
+		}// End of for i
+		System.out.print("} ");
+		
+		System.out.println("Average of prime numbers is : " + arrayPrimaryAverage(arrayPrime));
+		
+		//Ex 5.
+
+		System.out.println("Enter array first diminsion");
+		arrayLengthDimOne = sc.nextInt();
+		System.out.println("Enter array second diminsion");
+		arrayLengthDimTwo = sc.nextInt();
+		
+		int[][] sumPrime = new int[arrayLengthDimOne][arrayLengthDimTwo];
+		
+		System.out.println("Enter arrayPrime numbers :");
+		for(i = 0; i < sumPrime.length; i++)
+		{
+			for(j = 0; j < sumPrime[i].length; j++)
+				sumPrime[i][j] = sc.nextInt();
+		}
+		
+		System.out.println("sumPrime array :");
+		System.out.print(" {");
+		for(i = 0; i < sumPrime.length; i++)
+		{
+			for(j = 0; j < sumPrime[i].length; j++)
+			{
+				if (i + ONE != sumPrime[i].length)
+					System.out.print(sumPrime[i][j] + ", ");
+				else
+					System.out.print(sumPrime[i][j]);
+			}
+		}	
+		System.out.print(" }");
+		
+		System.out.println("Biggest sum of prime numbers is : " + arrayPrimaryBiggestLine(sumPrime));
+		
+		
+		
+		sc.close();
+	}
+
+
+
+	//Ex. 1
+
+	//The function gets array Integer and checks for this array if it is an ascending or descending series of numbers and return the boolean answer.
+
+	public static boolean seriesOfNum(int[] array) // Get an array from the user.
+	{
+		final int ONE;
+		int i, ascendCheck, descendCheck;
+		
+		ONE = 1;
+		ascendCheck = 0;
+		descendCheck = 0;
+		
+		
+		for(i = 1; i < array.length; i++) // Check if it ascending array.
+		{
+			if(array[i] > array[i - 1] )
+				ascendCheck++;
+		}
+		
+		for(i = 1; i < array.length; i++) // Check if it descending array.
+		{
+			if(array[i] < array[i - 1] )
+				descendCheck++;
+		}
+		
+		if(ascendCheck + ONE == array.length || descendCheck + ONE == array.length) // Return true if the array ascending or descending.
+			return true;
+		else
+			return false;
+	
+	}// End of ascending/descending array check function.
+	
+	//Ex. 2
+	
+	public static boolean dividedSeries(int[] array1, int[] array2) // The function get two one-dimensional arrays of integers of the same size.
+	{
+		final int ZERO;
+		int i, divideCheck;
+		
+		divideCheck = 0;
+		ZERO = 0;
+		
+		for(i = 0; i < array1.length; i++) // Check if the numbers on the corresponding location on the two array is dividable.
+		{
+			if(array1[i] % array2[i] == ZERO)
+				divideCheck ++;
+		}
+	
+		if(divideCheck == array1.length) // Return true if the condition met.
+			return true;
+		else
+			return false;
+	
+	} // End of dividalbe arrays function.
+	
+	// Ex. 3
+	
+	public static double distance(double x1, double y1 , double x2 ,double y2) //The function get the (x,y) of 2 points in the axes system and return thier distance.
+	{
+		final int TWO;
+		double powX, powY;
+		
+		TWO = 2;
+		
+		powX = Math.pow(x1 - x2, TWO); //The equation for distance between 2 points on the axes system is : sqrt of [(X1 -X2)^2 + (Y1 -Y2)^2].
+		powY = Math.pow(y1 - y2, TWO);
+		
+		return Math.sqrt(powX + powY);
+	
+	} // End of distance function.
+	
+	
+	public static double perimeter(double side1, double side2, double side3) //The function get 3 sides of a right angle triangle and return its perimeter.
+	{
+		return side1 + side2 + side3; //Perimeter of a tringle is the sum of all it sides.
+	} //End of perimeter function.
+	
+	public static double area(double AC ,double AB) //The function get 3 sides of a right angle triangle and return its perimeter.
+	{
+		final int TWO = 2;
+		
+		return AC * AB / TWO; // The area of a right angle triangle is : the leg of a right angle triangle times the other leg divided by 2
+	
+	} // End of area function
+	
+	public static double[] tringleAreaPerimeter(double AX, double AY, double BX, double BY, double CX, double CY)// function that gets 3 points on axes system finds the area and perimeter of a right angle triangle that they make,
+	//And returns these values ​​as an array of size 2, where in the 0 cell there is the area of ​​the triangle, and in cell 1 there will be a perimeter.
+	{
+		final int TWO;
+		
+		TWO = 2;
+		
+		double[] arrayTringle = new double[TWO]; 
+		
+		double sideAB, sideAC, sideBC;
+		
+		sideAB = distance(AX, AY, BX, BY); // The distance between point A and B
+		sideAC = distance(AX, AY, CX, CY); // The distance between point A and C
+		sideBC = distance(BX, BY, CX, CY); // The distance between point B and C
+		
+		arrayTringle[0] = perimeter(sideAB, sideAC, sideBC); //The perimeter of tringle A,B,C
+		arrayTringle[1] = area(sideAC, sideAB); //The perimeter of tringle A,B,C
+		
+		return arrayTringle;
+		
+	} //End of function that return the area and perimeter of right angle triangle in array of 2.
+	
+	//Ex.4
+	
+	public static double arrayPrimaryAverage(int[][] arrayPrime) // A function that accepts a two-dimensional array of integers , and return the average of the prime numbers in the array.
+	{
+		final int ZERO, TWO, THREE;
+		int i, j;
+		double averagePrime, countPrime;
+		
+		ZERO = 0;
+		TWO = 2;
+		THREE = 3;
+		averagePrime = 0;
+		countPrime = 0;
+		
+		for(i = 0; i < arrayPrime.length; i++)
+		{
+			for(j = 0; j < arrayPrime[i].length; j++)
+			{
+				if(arrayPrime[i][j] % TWO != ZERO && arrayPrime[i][j] % THREE != ZERO || arrayPrime[i][j] == TWO) //Check if the number in the cell is a primary number.
+				{
+					averagePrime += arrayPrime[i][j]; // The sum of the prime numbers
+					countPrime++; // The count of the prime numbers.
+				}
+			}
+		}
+		
+		return averagePrime / countPrime; // The average of the prime numbers in the array.
+	
+	} // End of the function that return the average of a prime numbers in the array.
+	
+	//Ex. 5
+	
+	public static double arrayPrimaryBiggestLine(int[][] arrayPrime) //Function that two-dimensional array of integers and checks for that array in which row it is The highest sum of the prime numbers
+	//And return the sum of the prime numbers of that row.
+	{
+		final int ZERO, ONE, TWO, THREE;
+		int i, j;
+		double biggestLine;
+		
+		double[] sumPrime = new double [arrayPrime.length];
+		
+		ZERO = 0;
+		ONE = 1;
+		TWO = 2;
+		THREE = 3;
+		biggestLine = 0;
+		
+		for(i = 0; i < arrayPrime.length; i++)
+		{
+			for(j = 0; j < arrayPrime[i].length; j++)
+			{
+				if(arrayPrime[i][j] % TWO != ZERO && arrayPrime[i][j] % THREE != ZERO || arrayPrime[i][j] == TWO) //Check if the number in the cell is a primary number.
+				{
+					sumPrime[i] += arrayPrime[i][j]; // The sum of prime numbers in the row j.
+				}
+			}// End of for j
+		} // End of for i
+		
+		for(i = 1; i < sumPrime.length; i++) 
+		{
+			if(sumPrime[i] > sumPrime[i - ONE]) // Check which row has the highest sum of prime numbers.
+			{
+				biggestLine = sumPrime[i];
+			}
+		}// End of for i
+		
+		return biggestLine;
+	
+	} //End of function that return the highest sum of prime numbers in a row of an array. 
+	
+	
+	
+	
+	
+	
+	
+	
+}	

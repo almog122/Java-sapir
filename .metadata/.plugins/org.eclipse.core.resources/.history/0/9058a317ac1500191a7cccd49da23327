@@ -1,0 +1,87 @@
+package lab9;
+import java.util.Scanner;
+public class zibi2 {
+	public static void main(String[] args) {
+		Scanner input = new Scanner (System.in);
+		
+		int num = 153;
+		System.out.println(recIsAscendingDigitsNum(num));
+		int [] array = {5,2,4,5,3,1};
+		
+		System.out.println(recSumMinMaxArr(array));
+		
+		
+		input.close();
+	}
+	public static boolean recIsAscendingDigitsNum(int num)
+	{
+		return recIsAscendingDigitsNum(num ,num/10);
+	}
+	
+	public static boolean recIsAscendingDigitsNum(int num, int numAfterDivision10)
+	{
+		if(numAfterDivision10 != 0)
+		{
+			if(num % 10 > numAfterDivision10 % 10 == recIsAscendingDigitsNum(numAfterDivision10))
+				return false;
+			
+		}
+		return true;
+	}
+
+
+	public static int recSumMinMaxArr(int[] array)
+	{
+		return recSumMinMaxArr(array, 0);
+	}
+	
+	public static int recSumMinMaxArr(int[] array, int index)
+	{	
+		int big, small;
+//		
+//		if(index != array.length - 1)
+//		{
+//			if(array[index] > recSumMinMaxArr(array, index + 1))
+//			{
+//				big = array[index];
+//				return big + small;
+//			}
+//			
+//			else 
+//			{
+//				small = array[index];
+//				return array[index + 1];
+//			}
+//		}
+		
+		if(index != array.length - 1)
+		{
+				big = Math.max(array[index], recSumMinMaxArr(array,index + 1));
+				small = Math.min(array[index], recSumMinMaxArr(array,index + 1));
+		
+			return big + small;
+			
+		}
+		big = Math.max(array[index], recSumMinMaxArr(array,index));
+		small = Math.min(array[index], recSumMinMaxArr(array,index ));
+		return big + small;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+}

@@ -1,0 +1,38 @@
+import java.util.Scanner;
+public class task {
+
+	public static void main(String[] args) {
+		double num;
+		Scanner sc = new Scanner (System.in);
+		sqrt();
+	}
+
+	public static void sqrt()
+	{
+		Scanner sc = new Scanner (System.in);
+		
+		int num;
+		double result;
+		
+		System.out.println("enter a number");
+		num = sc.nextInt();
+		
+		result = Math.sqrt(num);
+		
+		System.out.printf("The result is : %f2",result);
+		
+		
+		
+		
+		
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+}

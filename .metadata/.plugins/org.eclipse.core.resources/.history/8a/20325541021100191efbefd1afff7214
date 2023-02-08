@@ -1,0 +1,316 @@
+//Igor Zhivilko ID: 306570946 Almog Fadida ID: 315544437 Moran Arzi ID: 200244945
+package lab9;
+import java.util.Scanner;
+public class Assignment9 {
+
+    public static Scanner sc = new Scanner(System.in);
+	
+	public static void main(String[] args) {
+		
+		final int TWO;
+		int i, j, arrayLengthDimOne, arrayLengthDimTwo;
+		double pointAX, pointAY, pointBX, pointBY, pointCX, pointCY;
+		
+		TWO = 2;
+		
+		// Ex. 1
+		
+		System.out.println("Choose array size :");
+		arrayLengthDimOne = sc.nextInt();
+		
+		int[] array = new int[arrayLengthDimOne];
+		
+		System.out.println("Enter array numbers :");
+		for(i = 0; i < array.length; i++)
+		{
+			array[i] = sc.nextInt();
+		}
+		
+		for(i = 0; i < array.length; i++)
+		{
+			System.out.print(array[i] + ", ");
+		}
+		
+		System.out.println("array ascending? : " + seriesOfNum(array));
+		
+		
+		//Ex. 2
+		
+		System.out.println("Choose arrayDivide1 size :");
+		arrayLengthDimOne = sc.nextInt();
+		
+		int[] arrayDivide1 = new int[arrayLengthDimOne];
+		
+		System.out.println("Choose arrayDivide2 size :");
+		arrayLengthDimOne = sc.nextInt();
+		
+		int[] arrayDivide2 = new int[arrayLengthDimOne];
+		
+		System.out.println("Enter arrayDivide1 numbers :");
+		for(i = 0; i < arrayDivide1.length; i++)
+		{
+			arrayDivide1[i] = sc.nextInt();
+		}
+		
+		System.out.println("Enter arrayDivide2 numbers :");
+		for(i = 0; i < arrayDivide1.length; i++)
+		{
+			arrayDivide2[i] = sc.nextInt();
+		}
+		
+		System.out.print("arrayDivide1 :");
+		for(i = 0; i < arrayDivide1.length; i++)
+		{
+			System.out.print(arrayDivide1[i] + ", ");
+		}
+		
+		System.out.print("arrayDivide2 :");
+		for(i = 0; i < arrayDivide1.length; i++)
+		{
+			System.out.print(arrayDivide2[i] + ", ");
+		}
+		
+		System.out.println("the arrays divide perfectly : " + dividedSeries(arrayDivide1, arrayDivide2));
+		
+		//Ex 3.
+		
+		System.out.println("Enter A(x , y)");
+		pointAX = sc.nextDouble();
+		pointAY = sc.nextDouble();
+		System.out.println("Enter B(x , y)");
+		pointBX = sc.nextDouble();
+		pointBY = sc.nextDouble();
+		System.out.println("Enter C(x , y)");
+		pointCX = sc.nextDouble();
+		pointCY = sc.nextDouble();
+		
+		double[] arrayTringle = tringleAreaPerimeter(pointAX, pointAY, pointBX, pointBY, pointCX, pointCY);
+		
+		System.out.println("Tringle perimeter : " + arrayTringle[0]);
+		System.out.println("Tringle area : " + arrayTringle[1]);
+	
+		//Ex 4.
+		
+		System.out.println("Enter array first diminsion");
+		arrayLengthDimOne = sc.nextInt();
+		System.out.println("Enter array second diminsion");
+		arrayLengthDimTwo = sc.nextInt();
+		
+		int[][] arrayPrime = new int[arrayLengthDimOne][arrayLengthDimTwo];
+		
+		System.out.println("Enter arrayPrime numbers :");
+		for(i = 0; i < arrayPrime.length; i++)
+		{
+			for(j = 0; j < arrayPrime[i].length; j++)
+				arrayPrime[i][j] = sc.nextInt();
+		}
+		
+		System.out.println("arrayPrime :");
+		for(i = 0; i < arrayPrime.length; i++)
+		{
+			for(j = 0; j < arrayPrime[i].length; j++)
+				System.out.print(arrayPrime[i][j] + ", ");
+		}
+		
+		System.out.println("Average of prime numbers is : " + arrayPrimaryAverage(arrayPrime));
+		
+		//Ex 5.
+
+		System.out.println("Enter array first diminsion");
+		arrayLengthDimOne = sc.nextInt();
+		System.out.println("Enter array second diminsion");
+		arrayLengthDimTwo = sc.nextInt();
+		
+		int[][] sumPrime = new int[arrayLengthDimOne][arrayLengthDimTwo];
+		
+		System.out.println("Enter arrayPrime numbers :");
+		for(i = 0; i < sumPrime.length; i++)
+		{
+			for(j = 0; j < sumPrime[i].length; j++)
+				arrayPrime[i][j] = sc.nextInt();
+		}
+		
+		System.out.println("sumPrime array :");
+		for(i = 0; i < arrayPrime.length; i++)
+		{
+			for(j = 0; j < arrayPrime[i].length; j++)
+				System.out.print(arrayPrime[i][j] + ", ");
+		}
+		
+		System.out.println("Biggest sum of prime numbers is : " + arrayPrimaryBiggestLine(sumPrime));
+		
+		
+		
+		sc.close();
+	}
+
+
+
+	//Ex. 1
+
+	public static boolean seriesOfNum(int[] array)
+	{
+		int i, ascendCheck;
+		
+		ascendCheck = 0;
+		
+		for(i = 1; i < array.length; i++)
+		{
+			if(array[i] > array[i - 1] )
+				ascendCheck++;
+		}
+		
+		if(ascendCheck + 1 == array.length)
+			return true;
+		else
+			return false;
+	}
+	
+	//Ex. 2
+	
+	public static boolean dividedSeries(int[] array1, int[] array2)
+	{
+		final int ZERO;
+		int i, divideCheck;
+		
+		divideCheck = 0;
+		ZERO = 0;
+		
+		
+		for(i = 0; i < array1.length; i++)
+		{
+			if(array1[i] % array2[i] == ZERO)
+				divideCheck ++;
+		}
+	
+		if(divideCheck == array1.length)
+			return true;
+		else
+			return false;
+	}
+	
+	// Ex. 3
+	
+	public static double distance(double x1, double y1 , double x2 ,double y2)
+	{
+		final int TWO;
+		
+		TWO = 2;
+		
+		double powX, powY;
+		
+		powX = Math.pow(x1 - x2, TWO);
+		powY = Math.pow(y1 - y2, TWO);
+		
+		return Math.sqrt(powX + powY);
+	}
+	
+	
+	public static double perimeter(double side1, double side2, double side3)
+	{
+		return side1 + side2 + side3;
+	}
+	
+	public static double area(double AC ,double AB)
+	{
+		final int TWO = 2;
+		
+		return AC * AB / TWO;
+	}
+	
+	public static double[] tringleAreaPerimeter(double AX, double AY, double BX, double BY, double CX, double CY)
+	{
+		final int TWO;
+		
+		TWO = 2;
+		
+		double[] arrayTringle = new double[TWO];
+		
+		double sideAB, sideAC, sideBC;
+		
+		sideAB = distance(AX, AY, BX, BY);
+		sideAC = distance(AX, AY, CX, CY);
+		sideBC = distance(BX, BY, CX, CY);
+		
+		arrayTringle[0] = perimeter(sideAB, sideAC, sideBC);
+		arrayTringle[1] = area(sideAC, sideAB);
+		
+		return arrayTringle;
+		
+	}
+	
+	//Ex.4
+	
+	public static double arrayPrimaryAverage(int[][] arrayPrime)
+	{
+		final int ZERO, TWO, THREE;
+		int i, j;
+		double averagePrime, countPrime;
+		
+		ZERO = 0;
+		TWO = 2;
+		THREE = 3;
+		averagePrime = 0;
+		countPrime = 0;
+		
+		for(i = 0; i < arrayPrime.length; i++)
+		{
+			for(j = 0; j < arrayPrime[i].length; j++)
+			{
+				if(arrayPrime[i][j] % TWO != ZERO && arrayPrime[i][j] % THREE != ZERO || arrayPrime[i][j] == TWO)
+				{
+					averagePrime += arrayPrime[i][j];
+					countPrime++;
+				}
+			}
+		}
+		
+		return averagePrime / countPrime;
+	}
+	
+	//Ex. 5
+	
+	public static double arrayPrimaryBiggestLine(int[][] arrayPrime)
+	{
+		final int ZERO, ONE, TWO, THREE;
+		int i, j;
+		double biggestLine;
+		
+		double[] sumPrime = new double [arrayPrime.length];
+		
+		ZERO = 0;
+		ONE = 1;
+		TWO = 2;
+		THREE = 3;
+		biggestLine = 0;
+		
+		for(i = 0; i < arrayPrime.length; i++)
+		{
+			for(j = 0; j < arrayPrime[i].length; j++)
+			{
+				if(arrayPrime[i][j] % TWO != ZERO && arrayPrime[i][j] % THREE != ZERO || arrayPrime[i][j] == TWO)
+				{
+					sumPrime[i] += arrayPrime[i][j];
+				}
+			}
+		}
+		
+		for(i = 1; i < sumPrime.length; i++)
+		{
+			if(sumPrime[i] > sumPrime[i - ONE])
+			{
+				biggestLine = sumPrime[i];
+			}
+		}
+		
+		return biggestLine;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+}	

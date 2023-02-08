@@ -1,0 +1,45 @@
+//Igor Zibilko ID: 13848772 Almog Fadida ID: 315544437 Moran Arzi ID: 200244945
+
+import java.util.Scanner;
+public class Exe5 {
+	
+	public static void main(String[] args) {
+		
+		Scanner sc = new Scanner (System.in);
+		
+		final int LOWER_BORDER, UPPER_BORDER, DEFAULT;
+		int userNum, i, j;
+		
+		LOWER_BORDER = 2;
+		UPPER_BORDER = 20;
+		DEFAULT = 5;
+		
+		System.out.println("Enter a number");
+		userNum = sc.nextInt();
+		
+		if(userNum > UPPER_BORDER || userNum < LOWER_BORDER)
+			userNum = DEFAULT;
+		
+		for(i = 1; i <= userNum; i++ )
+			System.out.print("*");
+		
+		for(i = 1; i <= userNum; i++ )
+		{	
+			System.out.print("\n*");
+			
+			for(j = 1; j <2; j++)
+			{
+				System.out.print(" ");
+			}
+			System.out.print("*");
+		}
+		
+		System.out.println();
+		
+		for(i = 1; i <= userNum; i++ )
+			System.out.print("*");
+		
+		sc.close();
+	}
+
+}

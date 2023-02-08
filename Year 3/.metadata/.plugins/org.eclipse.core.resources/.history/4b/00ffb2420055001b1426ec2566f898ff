@@ -1,0 +1,68 @@
+import junit.framework.TestCase;
+
+public class testPublishAdv extends TestCase {
+	//Attributes
+	protected publishAdv adv;
+	protected String[] testArrayOfContent;
+	//String[] testArrayOfContent = {"Software" ,"Engineer" , "full-time","5000","non","west","Hello world"};
+	//publishAdv adv = new publishAdv("Software", "Engineer", "full-time", "5000", "non","west", "Hello world");
+
+	
+	void testPublishAdv(String name){
+		
+		super(name);
+		
+		testArrayOfContent = new String[7];
+		testArrayOfContent[0] = "Software";
+		testArrayOfContent[1] = "Engineer";
+		testArrayOfContent[2] = "full-time";
+		testArrayOfContent[3] = "5000";
+		testArrayOfContent[4] = "non";
+		testArrayOfContent[5] = "west";
+		testArrayOfContent[6] = "Hello world";
+		
+		String header, jobType, scope, salary, edu, area, text;
+		
+		header = testArrayOfContent[0];
+		jobType = testArrayOfContent[1];
+		scope = testArrayOfContent[2];
+		salary = testArrayOfContent[3];
+		edu = testArrayOfContent[4];
+		area = testArrayOfContent[5];
+		text = testArrayOfContent[6];
+		
+		adv = new publishAdv(header, jobType, scope, salary, edu, area, text);
+	}
+	
+	
+	
+	//test for object: "adv" and initial define testArrayOfContent
+	public void testHeader() throws Exception {
+		
+		assertEquals(this.testArrayOfContent[0], adv.getContentByVal(0));
+	}
+	
+	public void testJobType() throws Exception {
+		assertEquals(this.testArrayOfContent[1], adv.getContentByVal(1));
+	}
+	
+	public void testArea() throws Exception {
+		assertEquals(this.testArrayOfContent[5], adv.getContentByVal(5));
+	}
+	
+	//test return correct id's adv 
+	public void testAdvId() {
+		assertEquals(1 , this.adv.get_idAd());
+	}
+	
+	//test for all elements of content's array
+	public void testContent() throws Exception {
+		for(int i=0; i<adv.getContent().length; i++)
+			assertEquals(testArrayOfContent[i],adv.getContentByVal(i));
+	}
+	//test isPublish by correct 
+	public void testIsPublish() {
+		assertTrue(adv.getIsPublish());
+	}
+	
+}

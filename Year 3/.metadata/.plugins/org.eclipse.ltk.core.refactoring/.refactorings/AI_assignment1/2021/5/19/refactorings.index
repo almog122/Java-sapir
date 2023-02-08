@@ -1,0 +1,6 @@
+1620231088936	Delete element
+1620399267793	Delete element
+1620483709613	Rename field 'state'
+1620486207913	Encapsulate field 'totalCost'
+1620487674056	Rename field 'location'
+1620487731525	Encapsulate field 'blankLocation'

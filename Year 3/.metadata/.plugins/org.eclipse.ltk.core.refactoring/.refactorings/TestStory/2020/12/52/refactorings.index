@@ -1,0 +1,21 @@
+1608452620026	Encapsulate field 'salary'
+1608452631009	Encapsulate field 'job'
+1608452644054	Encapsulate field 'education'
+1608452683358	Rename compilation unit 'Job.java'
+1608452693282	Encapsulate field 'scopeOfJob'
+1608452698500	Encapsulate field 'location'
+1608452703185	Encapsulate field 'role'
+1608452712264	Encapsulate field 'lineOfBusiness'
+1608453044368	Rename type 'JobSearch'
+1608466998725	Delete element
+1608534414888	Rename type 'JobProxyInterFace'
+1608537296065	Rename type 'postingJobStoryTest'
+1608537354982	Rename type 'jobSearchStoryTest'
+1608537387898	Rename type 'PostJobStoryTesting'
+1608546182613	Rename type 'jobTestInterFace'
+1608546261213	Rename type 'jobRealInterFace'
+1608546289832	Rename type 'ProxyInterFaceTest'
+1608554941095	Rename type 'JobTesting'
+1608554966169	Rename type 'interfaceAndJobTest'
+1608562661278	Delete element
+1608563120178	Copy compilation units

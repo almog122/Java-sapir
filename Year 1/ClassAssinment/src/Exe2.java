@@ -1,0 +1,54 @@
+//Igor Zhivilko ID: 306570946 Almog Fadida ID: 315544437 Moran Arzi ID: 200244945
+
+import java.util.Scanner;
+public class Exe2 {
+	
+	public static void main(String[] args) {
+		
+		Scanner sc = new Scanner (System.in);
+		
+		final int LOSES;
+		int countLose, i, randNum, guess;
+		
+		LOSES = 10;
+		randNum = (int) (Math.random() * 100 + 1);
+		countLose = 0;
+		
+		
+		System.out.println("Enter your guess");
+		guess = sc.nextInt();
+		
+		if(guess == randNum)
+			System.out.println("You Win");
+
+		while(guess != randNum)
+		{
+			if(guess > randNum) 
+				{
+				System.out.println("Your number is bigger ");
+				countLose ++;
+				} 
+			
+			if(guess < randNum) 
+				{
+				System.out.println("your number is smaller ");
+				countLose ++;	
+				}
+			
+			if(countLose == LOSES) 
+				{
+				System.out.println("Game Over");
+				break;
+				}
+			
+			System.out.println("Enter you're guess");
+			guess = sc.nextInt();
+		}//end while
+		
+		if(guess == randNum)
+			System.out.println("You Win");
+		
+		sc.close();
+	}
+
+}

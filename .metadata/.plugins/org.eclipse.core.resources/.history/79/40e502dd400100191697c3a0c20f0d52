@@ -1,0 +1,77 @@
+import java.util.Scanner;
+public class task {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner (System.in);
+		bro();
+		sqrt();
+		
+	}
+
+	public static void sqrt()
+	{
+		Scanner sc = new Scanner (System.in);
+		
+		int num ;
+		double result;
+		
+		System.out.println("enter a number");
+		num = sc.nextInt();
+		
+		result = Math.sqrt(num);
+		
+		System.out.printf("The result is : %.2f",result);
+		
+		sc.close();
+	}
+	
+	public static void pow()
+	{
+		Scanner sc = new Scanner (System.in);
+		
+		int num ;
+		double result;
+		
+		System.out.println("enter a number");
+		num = sc.nextInt();
+		
+		result = (int) (Math.pow(num,2));
+		
+		System.out.printf("The result is : %.2f",result);
+		
+		sc.close();
+	}
+	
+	public static void bro()
+	{
+		Scanner sc = new Scanner (System.in);
+		
+		System.out.println("Hello. here are your options:");
+		System.out.println("1.root casof num");
+		System.out.println("2.pow case of num");
+		System.out.println("Enter you choise");
+		sc.close();
+	}
+	
+	public static void in()
+	{
+		Scanner sc = new Scanner (System.in);
+		
+		char ch = sc.next().charAt(0);
+		
+		switch(ch)
+		{
+			case 1 :
+				sqrt();
+				break;
+				
+			case 2 :
+				pow();
+				break;
+		}
+		
+		
+	}
+	
+	
+}

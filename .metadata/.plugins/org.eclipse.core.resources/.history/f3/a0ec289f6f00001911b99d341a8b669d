@@ -1,0 +1,38 @@
+//Igor Zhivilko ID: 306570946 Almog Fadida ID: 315544437 Moran Arzi ID: 200244945
+import java.util.Scanner;
+public class Exe1 {
+
+	
+	public static void main(String[] args) {
+		
+		Scanner sc = new Scanner (System.in);
+		
+		final int ZERO, ONE , TEN;
+		int num, digitMul, remainder, division;
+		
+		ZERO = 0;
+		ONE = 1;
+		TEN = 10;
+		digitMul = 1;
+		
+		System.out.println("Enter postive number");
+		num = sc.nextInt();
+		
+		if(num < ZERO)
+			System.out.println("Only positive integers allowed ");
+		
+		else
+		{
+			while(num != ZERO)
+				{
+				remainder = num % TEN;
+				digitMul *= remainder;
+				num = (num - remainder) / TEN;
+				}
+			System.out.println("The result is " + digitMul - );
+		}
+		
+		sc.close();
+	}
+
+}

@@ -1,0 +1,27 @@
+import java.util.Scanner;
+public class task {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner (System.in);
+		sqrt();
+	}
+
+	public static void sqrt()
+	{
+		Scanner sc = new Scanner (System.in);
+		
+		double num , num1;
+		double result;
+		
+		System.out.println("enter a number");
+		num = sc.nextDouble();
+		num1 = sc.nextDouble();
+		
+		result = Math.pow(num,num1);
+		
+		System.out.printf("The result is : %.2f",result);
+		
+		sc.close();
+	}
+	
+}

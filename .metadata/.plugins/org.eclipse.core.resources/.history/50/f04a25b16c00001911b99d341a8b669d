@@ -1,0 +1,57 @@
+//Igor Zibilko ID: 13848772 Almog Fadida ID: 315544437 Moran Arzi ID: 200244945
+
+import java.util.Scanner;
+public class Exe6 {
+	
+	public static void main(String[] args) {
+		
+		Scanner sc = new Scanner (System.in);
+		
+		final int ZERO, TEN, THREE;
+		int numFromUser, countDigit, remainder, i, numCheck ,sum;
+		
+		THREE = 3;
+		ZERO = 0;
+		TEN = 10;
+		countDigit = 0;
+		sum = 0;
+		
+		System.out.println("Enter a three or more digits number");
+		numFromUser = sc.nextInt();
+		
+		numCheck = numFromUser;
+		
+		do
+		{
+			while(numCheck != ZERO) 
+			{
+				countDigit ++;
+				remainder = numCheck % TEN;
+				numCheck = (numCheck - remainder) / TEN;
+			}
+			
+			if(countDigit < THREE)
+			{
+				System.out.println("Invalid number,"
+						+ " Enter a valid number");
+				numFromUser = sc.nextInt();
+				countDigit = 0;
+				numCheck = numFromUser;
+			}
+		}
+		while(countDigit < THREE);
+		
+		{
+			for(i = 1; i <= countDigit; i++)
+			{
+				remainder = numFromUser % TEN;
+				sum = (sum + remainder) * TEN;
+				numFromUser = (numFromUser - remainder) / TEN;
+			}
+		System.out.println("Reverse number = " + sum / TEN);
+		}
+		
+		sc.close();
+	}
+
+}

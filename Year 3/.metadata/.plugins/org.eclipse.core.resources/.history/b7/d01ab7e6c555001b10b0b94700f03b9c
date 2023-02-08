@@ -1,0 +1,16 @@
+
+public class server {
+	
+	public String[] domain = {};
+	public String[] role = {};
+	public String[] area= {};
+	
+	
+	
+	
+	
+	
+	
+	
+	
+}

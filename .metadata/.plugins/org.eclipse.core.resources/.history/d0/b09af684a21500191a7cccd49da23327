@@ -1,0 +1,71 @@
+package lab9;
+import java.util.Scanner;
+public class zibi2 {
+	public static void main(String[] args) {
+		Scanner input = new Scanner (System.in);
+		
+		int num = 153;
+		System.out.println(recIsAscendingDigitsNum(num));
+		int [] array = {5,2,4,3,5,8,1};
+		
+		System.out.println(recSumMinMaxArr(array));
+		
+		
+		input.close();
+	}
+	public static boolean recIsAscendingDigitsNum(int num)
+	{
+		return recIsAscendingDigitsNum(num ,num/10);
+	}
+	
+	public static boolean recIsAscendingDigitsNum(int num, int numAfterDivision10)
+	{
+		if(numAfterDivision10 != 0)
+		{
+			if(num % 10 > numAfterDivision10 % 10 == recIsAscendingDigitsNum(numAfterDivision10))
+				return false;
+			
+		}
+		return true;
+	}
+
+
+	public static int recSumMinMaxArr(int[] array)
+	{
+		return recSumMinMaxArr(array, 0 , array[0], array[1]);
+	}
+	
+	public static int recSumMinMaxArr(int[] array, int index, int small, int big)
+	{	
+		
+		if(index != array.length - 1)
+		{
+			if((big + small) >= recSumMinMaxArr(array, index + 1, small, big))
+				big = array[index];
+				
+			else
+				small = array[index - 1];
+			
+			return big + small;
+		}
+		return big + small;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+}

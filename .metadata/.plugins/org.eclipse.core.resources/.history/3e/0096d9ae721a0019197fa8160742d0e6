@@ -1,0 +1,41 @@
+//Igor Zhivilko ID: 306570946 Almog Fadida ID: 315544437 Moran Arzi ID: 200244945
+import java.util.Scanner;
+
+public class Assignment11 {
+
+	public static Scanner sc = new Scanner(System.in);
+	
+	public static void main(String[] args) {
+		
+		String str = new String();
+		String sub = new String();
+		
+		str = "I love programming. I love Java.";
+		sub ="love";
+		
+		System.out.println(subInStringLastIndex(str, sub));
+		
+		sc.close();
+	}
+
+	public static int subInStringLastIndex(String str, String sub)
+	{
+		int i, LastIndex;
+		 
+		LastIndex = 0;
+		
+		for(i = 0; i < sub.length(); i++)
+		{
+			if(sub.equals(str.substring(i, sub.length())))
+			{
+				LastIndex = i;
+			}
+		}
+		if(LastIndex > 0)
+			return LastIndex;
+		
+		return -1;
+	}
+	
+	
+}

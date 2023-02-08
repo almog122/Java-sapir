@@ -1,0 +1,42 @@
+//Igor Zhivilko ID: 306570946 Almog Fadida ID: 315544437 Moran Arzi ID: 200244945
+
+import java.util.Scanner;
+
+public class Assignment11 {
+
+	public static Scanner sc = new Scanner(System.in);
+	
+	public static void main(String[] args) {
+		
+		String str = new String();
+		String sub = new String();
+		
+		str = "fast breakfast";
+		sub ="fast";
+		
+		System.out.println(subInStringLastIndex(str, sub));
+		
+		sc.close();
+	}
+
+	//Ex. 1
+	
+	public static int subInStringLastIndex(String str, String sub)
+	{	
+		for(int i = str.length() ; i > sub.length() - 1 ; i--)
+		{
+			if(sub.equals(str.substring(i - sub.length(), i)))
+				return i - sub.length();
+		}
+		
+		return -1;
+	}
+	
+	//Ex 2.
+	
+	
+	
+	
+	
+	
+}//End of class

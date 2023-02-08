@@ -1,0 +1,281 @@
+
+public class company {
+	
+	/*
+	 * Comments
+	 * 1. (indicator 1) = true; (indicator 0) = false
+	 */
+	
+	//Attributes 
+	private String name;
+	private String user;
+	private String pass;
+	private int numOfAds = 0;
+	private publishAdv[] adv;
+	private static int idCompany = 1;
+	private String id;
+	private int numCurrectAdvs;
+	
+	//Constructor
+	public company(String name, String user, String pass, int numOfAds) {
+		
+		int indicator = 1;
+		indicator *= set_name(name);
+		indicator *= set_user(user);
+		indicator *= set_pass(pass);
+		indicator *= set_numOfAds(numOfAds);
+		
+		if(indicator == 1) {
+			idCompany++;
+			set_id(id);
+			this.adv = new publishAdv[numOfAds];
+			this.adv = init_ObjArr(adv);
+			this.numCurrectAdvs = -1;
+		} else 
+			set_id(0);
+		
+	}
+	
+	//Assistant Methods
+	private publishAdv[] search_byParm(publishAdv[] arr, String valParm, String parm) {
+		publishAdv[] tempArr = null;
+		int index = -1; //index related to 
+		
+		switch (parm) {
+		case "domain":
+			index = 0;
+			break;
+		case "role":
+			index = 1;
+			break;
+		case "area":
+			index = 5;
+			break;
+		}
+		
+		if(index != -1) {
+			int i = 0;
+			for(publishAdv val : arr)	
+				if(val != null && val.getContentByVal(index) == valParm)
+					i++;
+			if(i != 0) {
+				tempArr = new publishAdv[i];
+				i = 0;
+			//copy elements to array by filter-in parm variable
+			for(publishAdv val : arr)	
+				if(val != null && val.getContentByVal(index) == valParm) {
+					tempArr[i] = val;
+					i++;
+				}
+			}//end-condition: (index != -1)		
+		}
+		return tempArr;
+	}
+	
+	
+	private publishAdv[] init_ObjArr(publishAdv[] arr){
+		for(publishAdv val : arr)
+			val = null;
+		return arr;
+	}
+	
+	private boolean check_credit() {
+		int res = 0;
+		if(numOfAds != 0)
+			res = numOfAds - (numCurrectAdvs +1); //positive - available Adv; negative - no available
+		boolean credit = (res < 0 || res == 0) ? false : true;
+		return credit;
+	}
+	
+	//SETs
+	public void set_id(int id) {
+		this.id = id;
+	}
+	
+	public int set_name(String name) {
+		if(name != "") {
+			this.name = name;
+			return 1;
+		}
+		return 0; 
+	}
+	
+	public int set_user(String user) {
+		if(user != "") {
+			this.user = user;
+			return 1;
+		}
+		return 0;
+	}
+	
+	public int set_pass(String pass) {
+		if(name != "") {
+			this.pass = pass;
+			return 1;
+		}
+		return 0;
+	}
+	
+	public int set_numOfAds(int numOfAds) {
+		if(numOfAds == 10 || numOfAds == 100 || numOfAds == 1000 ) {
+			this.numOfAds = numOfAds;
+			return 1;
+		}
+		return 0;
+	}
+	
+	//GETs	
+	public String getName() {
+		return this.name;
+	}
+	
+	public String getUser() {
+		return this.user;
+	}
+	
+	public String getPass() {
+		return this.pass;
+	}
+	
+	public int getNumOfAds() {
+		return this.numOfAds;
+	}
+	
+	public int getId() {
+		return this.id;
+	}
+	
+	//Methods
+	public String addNewAd(String user, String pass, String header, String jobType, String text, String area, String adId) {
+		if(this.user == user && this.pass == pass) {
+			publishAdv temp = new publishAdv(adId ,header, jobType, "non", "non","non", text, area);
+			if(temp.getIsPublish() && check_credit()) {
+				this.numCurrectAdvs++;
+				this.adv[this.numCurrectAdvs] = temp;
+				return temp.get_adId();
+			}
+			else 
+				return null;
+		} else
+			return null;
+	}
+	
+	
+	public int getMyCredit(String user, String pass) {
+		int res = 0;
+		if(this.user == user && this.pass == pass)
+			if(numOfAds != 0)
+				res = numOfAds - (numCurrectAdvs +1); //positive - available Adv; negative - no available
+		int result = (res > 0) ? res : 0;
+		return result;
+			
+	}
+	
+	public String getCompanyId(String name) {
+		if(this.name == name)
+			return String.valueOf(this.id);
+		return null;
+	}
+	
+	public String[] getMyAdsIds(String user, String pass) {
+		String[] idArr;
+		int size = this.adv.length;
+		if(this.user == user && this.pass == pass) 
+			if(size != 0) {
+				int index = 0;
+				idArr = new String[size];
+				for(publishAdv val : this.adv)
+					if(val != null) {
+						idArr[index] = val.get_adId();
+						index++;
+					}	
+				return idArr;
+			}
+		return null;		
+	}
+	
+	public String[] getAd(String id) {
+		String[] content = null;
+		for(publishAdv val : this.adv) {
+			if(val.get_adId() == id) {
+				content = new String[8];
+				content[0] = val.getContentByVal(0); // domain = header
+				content[1] = val.getContentByVal(1); // role = jobType
+				content[2] = val.getContentByVal(2); // scope
+				content[3] = val.getContentByVal(3); // salary
+				content[4] = val.getContentByVal(4); // edu
+				content[5] = val.getContentByVal(5); // area
+				content[6] = val.getContentByVal(6); // text
+				content[7] = val.getContentByVal(7); // adId
+				break;
+			}
+		}
+		return content;
+	}
+	
+	public boolean closeAd(String user, String pass, String id) {
+		if(this.user == user && this.pass == pass)
+			for(publishAdv val : this.adv)
+				if(val.get_adId() == id) {
+					val.set_isPublish(false);
+					return true;
+				}
+		return false;
+	}
+	
+	
+	public String[] getAds(String domain, String role, String area) {
+		String[] idArr = null;
+		publishAdv[] tempArr = null;
+		
+		int counter = 0;
+		//Number of ad's status open
+		for(publishAdv val : this.adv)
+			if( (val != null) && val.getIsPublish() == true) //only if (val != null) --> check the second
+				counter++;
+		if(counter != 0)
+			tempArr = new publishAdv[counter];
+		if(tempArr.length != 0) {
+			//array with all open ad
+			int i = 0;
+			for(publishAdv val : this.adv)
+				if( (val != null) && val.getIsPublish() == true) {
+					tempArr[i] = val;
+					i++;
+				}
+			
+			//filter by domain
+			if(domain != null) {
+				tempArr = search_byParm(tempArr, domain, "domain");
+			}
+			
+			//filter by role
+			if(role != null) {
+				tempArr = search_byParm(tempArr, domain, "role");
+			}
+			
+			//filter by area
+			if(area != null) {
+				tempArr = search_byParm(tempArr, domain, "area");
+			}
+			
+			//create a String array with filter data
+			if(tempArr.length != 0) {
+				int size = tempArr.length;
+				idArr = new String[size];
+				
+				//copy element's id to idArr
+				int ind=0;
+				for(publishAdv val : tempArr) 
+					if(val != null) {
+						idArr[ind] = val.get_adId();
+						ind++;
+					}
+				return idArr;
+			}		
+		}
+		return null;			
+	}//End-getAds
+	
+	
+}

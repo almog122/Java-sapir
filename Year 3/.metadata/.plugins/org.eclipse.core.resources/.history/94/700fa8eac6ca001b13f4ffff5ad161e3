@@ -1,0 +1,15 @@
+package queen_lbs;
+
+public class main {
+
+	public static void main(String[] args) {
+		int boardSize = (int) ((Math.random() * 10) + 1);
+
+		randomRestartHillClimbing hillClimb = new randomRestartHillClimbing();
+		
+		char[][] table = hillClimb.CreateTable(boardSize);
+		
+		hillClimb.printTable(table);
+	}
+
+}

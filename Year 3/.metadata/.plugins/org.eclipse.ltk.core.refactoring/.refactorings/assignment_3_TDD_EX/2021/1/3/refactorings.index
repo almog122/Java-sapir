@@ -1,0 +1,35 @@
+1610554100242	Delete element
+1610554111501	Delete element
+1610554232786	Delete element
+1610554475635	Delete elements
+1610554541785	Delete elements
+1610559403271	Delete element
+1610617615797	Delete elements
+1610617681702	Delete elements
+1610619084937	Rename field 'listDomain'
+1610619103868	Rename field 'listRole'
+1610619123158	Rename field 'domainList'
+1610619133505	Rename field 'listArea'
+1610619177752	Rename field 'COMPANIES'
+1610619193858	Rename field 'ADVs'
+1610619446512	Rename field 'adId'
+1610620523968	Rename method 'getNumCurrectAdvs'
+1610621069135	Rename local variable 'currectId'
+1610621097103	Rename local variable 'objAd'
+1610621628296	Rename local variable 'item'
+1610621813751	Rename method 'getStringAllAds'
+1610622307232	Rename field 'allJobs'
+1610622488992	Rename local variable 'item'
+1610622508285	Rename local variable 'item'
+1610622597046	Rename method 'searchByArea'
+1610622621237	Rename method 'searchOpenOnly'
+1610623004388	Rename method 'searchByTwo'
+1610623216028	Rename local variable 'allAdvs'
+1610623259797	Rename local variable 'item'
+1610623286248	Rename local variable 'allAds'
+1610623334545	Rename local variable 'val'
+1610623442860	Rename local variable 'item'
+1610623875971	Rename field 'testSearchJob'
+1610624111809	Rename local variable 'list_demo'
+1610624226676	Rename local variable 'item'
+1610628357162	Rename type 'DrushimSite'

@@ -1,0 +1,144 @@
+
+public class RealBridge implements DrushimBridge {
+	
+	private String[] domainArr = {};
+	private String[] roleArr = {};
+	private String[] areaArr = {};
+	private company[] companyArr = {};
+	
+	
+	@Override
+	public void addArea(String string) {
+		String[] temp = new String[areaArr.length + 1];
+		
+		for(int i = 0; i < areaArr.length; i++ ) {
+			temp[i] = areaArr[i]; 
+		}
+		
+		if(areaArr.length == 0) {
+			temp[0] = string;
+		}
+		
+		else {
+			temp[areaArr.length - 1] = string;
+		}
+		
+		areaArr = temp;
+		throw new UnsupportedOperationException();
+	}
+
+	@Override
+	public String addCompany(String name, String user, String pass, int numOfAds) {
+		company com = new company(name, user, pass, numOfAds);
+		
+		if(com.getId() == null) {
+			return null;
+		}
+		else {
+			company[] temp = new company[companyArr.length + 1];
+			
+			for(int i = 0; i < companyArr.length; i++ ) {
+				temp[i] = companyArr[i]; 
+			}
+			
+			if(companyArr.length == 0) {
+				temp[0] = com;
+			}
+			
+			else {
+				temp[companyArr.length - 1] = com;
+			}
+			
+			companyArr = temp;
+			
+			return com.getId();
+		}
+		
+	}
+
+	@Override
+	public void addDomain(String string) {
+		String[] temp = new String[domainArr.length + 1];
+		
+		for(int i = 0; i < domainArr.length; i++ ) {
+			temp[i] = domainArr[i]; 
+		}
+		
+		if(domainArr.length == 0) {
+			temp[0] = string;
+		}
+		
+		else {
+			temp[domainArr.length - 1] = string;
+		}
+		
+		domainArr = temp;
+		
+		throw new UnsupportedOperationException();
+	}
+
+	@Override
+	public String addNewAd(String user, String pass, String domain, String role, String desc, String area) {
+		throw new UnsupportedOperationException();
+		// TODO Auto-generated method stub
+	}
+
+	@Override
+	public void addRole(String string) {
+		
+		String[] temp = new String[roleArr.length + 1];
+		
+		for(int i = 0; i < roleArr.length; i++ ) {
+			temp[i] = roleArr[i]; 
+		}
+		
+		if(roleArr.length == 0) {
+			temp[0] = string;
+		}
+		
+		else {
+			temp[roleArr.length - 1] = string;
+		}
+		
+		domainArr = temp;
+		throw new UnsupportedOperationException();
+		// TODO Auto-generated method stub
+	}
+
+	@Override
+	public boolean closeAd(String user, String pass, String id) {
+		throw new UnsupportedOperationException();
+		// TODO Auto-generated method stub
+	}
+
+	@Override
+	public String[] getAd(String id) {
+		throw new UnsupportedOperationException();
+		// TODO Auto-generated method stub
+	}
+
+	@Override
+	public String[] getAds(String role, String domain, String area) {
+		throw new UnsupportedOperationException();
+		// TODO Auto-generated method stub
+	}
+
+	@Override
+	public String getCompanyId(String name) {
+		throw new UnsupportedOperationException();
+		// TODO Auto-generated method stub
+	}
+
+	@Override
+	public String[] getMyAdsIds(String user, String pass) {
+		throw new UnsupportedOperationException();
+		// TODO Auto-generated method stub
+	}
+
+	@Override
+	public int getMyCredit(String user, String pass) {
+		throw new UnsupportedOperationException();
+		// TODO Auto-generated method stub
+	}
+
+}

@@ -1,0 +1,63 @@
+package assig3_2;
+
+public class HeavyWorker {
+	
+	boolean doneWorkA = false;
+	int countSec1 = 3;
+	
+	public void section1() {
+		System.out.println(Thread.currentThread().getName() + " is in section1");
+		try {
+			/* sleep to simulate some work... */
+			Thread.sleep(500);
+		} catch (InterruptedException e) {}
+		System.out.println(Thread.currentThread().getName() + " leaving section1");
+	}
+	
+	public void section2() {
+		System.out.println(Thread.currentThread().getName() + " is in section2");
+		try {
+			/* sleep to simulate some work... */
+			Thread.sleep(500);
+		} catch (InterruptedException e) {}
+		System.out.println(Thread.currentThread().getName() + " leaving section2");
+	}
+	
+	public synchronized void workA() {
+		
+		MySemaphore section1Sem = new MySemaphore(3);
+		MySemaphore section2Sem = new MySemaphore(1);
+		
+		System.out.println(Thread.currentThread().getName() + " doing workA");
+		
+		/* section1() can be called from up to 3 threads at the same time */
+		section1Sem.down();
+		section1();
+		
+		/* section2() can be called from one thread out of the 3 above    */
+		section2Sem.down();
+		section2();
+		section2Sem.up();
+		
+		while(countSec1 != 0)
+			section1Sem.up();
+		
+		doneWorkA = true;
+		notifyAll();
+	}
+	
+	public synchronized void workB() {
+		if(!doneWorkA) {
+			try {
+				this.wait();
+			}
+			catch(InterruptedException e){
+				e.printStackTrace();
+			}
+		
+		}
+		/* this will be printed only after workA() done at least once */
+		System.out.println(Thread.currentThread().getName() + " doing workB");
+	}
+	
+}

@@ -1,0 +1,136 @@
+//Igor Zhivilko ID: 306570946 Almog Fadida ID: 315544437 Moran Arzi ID: 200244945
+
+import java.util.Scanner;
+
+public class Assignment11 {
+
+	public static Scanner sc = new Scanner(System.in);
+	
+	public static void main(String[] args) {
+		
+		String str = new String();
+		String sub = new String();
+		
+		str = "fast breakfast";
+		sub ="fast";
+		
+		System.out.println(subInStringLastIndex(str, sub));
+		
+		String[] strArr = {"Hello", "Hello Guy", "Oh, Hello Guy, how are you?"};
+		
+		System.out.println(arrayIsSubStrings(strArr));
+		
+		char ch = 't';
+		
+		System.out.println(countCharInString(str, ch));
+		
+		String str2 = "madam";
+		
+		System.out.println(stringIsFlindrum(str2));
+		
+		System.out.println(recCountCharsInString(str, ch));
+		
+		sc.close();
+	}
+
+	//Ex. 1
+	
+	public static int subInStringLastIndex(String str, String sub)
+	{	
+		for(int i = str.length() ; i > sub.length() - 1 ; i--)
+		{
+			if(sub.equals(str.substring(i - sub.length(), i)))
+				return i - sub.length();
+		}
+		
+		return -1;
+	}
+	
+	//Ex 2.
+	
+	public static boolean stringIsSubString(String sub, String str)
+	{
+		for(int i = 0; i <= str.length() - sub.length(); i++)
+		{
+			if(sub.equals(str.substring(i, i + sub.length())));
+				return true;
+		}
+		
+		return false;
+	}
+	
+	
+	public static boolean arrayIsSubStrings(String[] strArr)
+	{
+		int checkSubString;
+		
+		checkSubString = 0;
+		
+		for(int i = 0; i < strArr.length - 1; i++)
+		{
+			if(stringIsSubString(strArr[i] , strArr[i + 1]))
+				checkSubString++;
+		}
+		
+		if(checkSubString == strArr.length - 1)
+			return true;
+		
+		return false;
+		
+	}
+	
+	//Ex 3
+	
+	public static int countCharInString(String str , char ch)
+	{
+		int countChar;
+		
+		countChar = 0;
+		
+		for(int i = 0; i < str.length(); i++ )
+		{
+			if(str.charAt(i) == ch)
+				countChar ++;
+		}
+		
+		return countChar;
+	}
+	
+	//Ex 4
+	
+	public static int stringIsFlindrum(String str)
+	{
+		
+		
+		for(int i = 0; i < str.length() / 2; i++)
+		{
+			if(str.charAt(i) != str.charAt(str.length() - i - 1))
+				return -1; // String not a flindrum
+		}
+		
+		if(str.length() % 2 == 0) // Flindrum string without mid character
+			return 0;
+		
+		return 1; // Flindrum string with mid character
+	}
+	
+	//Ex 5
+	
+	public static int recCountCharsInString(String str , char ch)
+	{
+		return recCountCharsInString(str ,ch , 0 , 0);
+	}
+	
+	public static int recCountCharsInString(String str, char ch, int index , int countChar)
+	{
+		
+		if(index < str.length())
+			if(str.charAt(index) == ch)
+				countChar++;
+			
+		return recCountCharsInString(str , ch , index + 1, countChar);	
+			
+	}
+	
+	
+}//End of class
